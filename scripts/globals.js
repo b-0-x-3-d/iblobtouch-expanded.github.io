@@ -13,6 +13,7 @@ var tankalpha = 1;
 var shapetimer = 120;
 var undos = [];
 var mirrorBarrels = 1;
+var mirrorBarrels2 = 0;
 var nShape = 0;
 var newGraph = true;
 
@@ -90,7 +91,7 @@ function Barrel(a, type, size, speed, time) {
 var barrels = [];
 //Array containing all the barrels, each entry is a Barrel object.
 
-function Bullet(n, size, speed, time, x, y, targetx, targety, spr, color) {
+function Bullet(n, size, speed, time, x, y, targetx, targety, spr, color, shape) {
     this.xoffset = barrels[n].xoffset;
     this.yoffset = barrels[n].yoffset;
     this.x = x;
@@ -110,6 +111,7 @@ function Bullet(n, size, speed, time, x, y, targetx, targety, spr, color) {
     this.initoffy = offset.totaly;
     this.transparency = 1;
     this.color = color;
+    this.shape = shape;
 }
 
 var bullets = [];

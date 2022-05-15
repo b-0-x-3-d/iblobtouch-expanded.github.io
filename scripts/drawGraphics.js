@@ -42,6 +42,19 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type, im
         ctx.fill();
         ctx.stroke();
     } else if (image === "trap") {
+            ctx.beginPath();
+            ctx.moveTo(xoffset + length, -(width / 2) - yoffset);
+            ctx.lineTo(xoffset + length + (length / 2), 0 - ((width * 1.5) + yoffset));
+            ctx.lineTo(xoffset + length + (length / 2), ((width * 1.5) - yoffset));
+            ctx.lineTo(xoffset + length, (width / 2) - yoffset);
+            ctx.lineTo(xoffset + length, -(width / 2) - yoffset);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.fillRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+            ctx.strokeRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+    } else if (image === "mg") {
         ctx.beginPath();
         ctx.moveTo(xoffset + length / 2, -(width / 2) - yoffset);
         ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 1.5) + yoffset));
@@ -51,6 +64,87 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type, im
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
+    } else if (image === "chasm") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2.5, -(width / 1) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 0.25) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 2), ((width * 0.25) - yoffset));
+        ctx.lineTo(xoffset + length / 2.5, (width / 1) - yoffset);
+        ctx.lineTo(xoffset + length / 2.5, -(width / 1) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "ruin") {
+        ctx.fillRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+        ctx.strokeRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+		
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2, -(width / 1.25) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 4), 0 - ((width * 1.5) + yoffset));
+        ctx.lineTo(xoffset + length / 3 + (length / 4), 0 - ((width * 0) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 4), ((width * 1.5) - yoffset));
+        ctx.lineTo(xoffset + length / 2, (width / 1.25) - yoffset);
+        ctx.lineTo(xoffset + length / 2, -(width / 1.25) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "burst") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 1.5) + yoffset));
+        ctx.lineTo(xoffset + length / 3 + (length / 2), 0 - ((width * 0) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 2), ((width * 1.5) - yoffset));
+        ctx.lineTo(xoffset + length / 2, (width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "blast") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 1.5) + yoffset));
+        ctx.lineTo(xoffset + length / 1.5 + (length / 2), 0 - ((width * 0) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 2), ((width * 1.5) - yoffset));
+        ctx.lineTo(xoffset + length / 2, (width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "brawl") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 1.5) + yoffset));
+        ctx.lineTo(xoffset + length / 1.5 + (length / 2), 0 - ((width * 1) + yoffset));
+        ctx.lineTo(xoffset + length / 3 + (length / 2), 0 - ((width * 0) + yoffset));
+        ctx.lineTo(xoffset + length / 1.5 + (length / 2), 0 - ((width * -1) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 2), ((width * 1.5) - yoffset));
+        ctx.lineTo(xoffset + length / 2, (width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "bind") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2 + (length / 2), 0 - ((width * 1.5) + yoffset));
+        ctx.lineTo(xoffset + length / 3 + (length / 2), 0 - ((width * .5) + yoffset));
+        ctx.lineTo(xoffset + length / 1.5 + (length / 2), 0 - ((width * 0) + yoffset));
+        ctx.lineTo(xoffset + length / 3 + (length / 2), 0 - ((width * -.5) + yoffset));
+        ctx.lineTo(xoffset + length / 2 + (length / 2), ((width * 1.5) - yoffset));
+        ctx.lineTo(xoffset + length / 2, (width / 2) - yoffset);
+        ctx.lineTo(xoffset + length / 2, -(width / 2) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    } else if (image === "auto") {
+            ctx.translate(xoffset + parseInt(validateField(document.getElementById("body").value, 32)), -((width / 2) + yoffset));
+            ctx.fillRect(0, 0, length, width);
+            ctx.strokeRect(0, 0, length, width);
+            ctx.beginPath();
+            ctx.arc(0, width / 2, width, 0, Math.PI * 2, true);
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
     } else if (image === "circle") {
         ctx.rotate(0 * (Math.PI / 180));
         ctx.beginPath();
@@ -70,6 +164,36 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type, im
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
+    } else if (image === "basic") {
+        ctx.fillRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+        ctx.strokeRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+    } else if (image === "basic2") {
+        ctx.fillRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+        ctx.strokeRect(xoffset, 0 - ((width / 2) + yoffset), length, width);
+        ctx.fillRect(xoffset + 50, -10 - ((width / 2) + yoffset), length - 50, width + 20);
+        ctx.strokeRect(xoffset + 50, -10 - ((width / 2) + yoffset), length - 50, width + 20);
+    } else if (image === "basic3") {
+        ctx.fillRect(xoffset, 0 - ((width / 2 + width / 2) + yoffset), length, width / 4 + width / 2);
+        ctx.strokeRect(xoffset, 0 - ((width / 2 + width / 2) + yoffset), length, width / 4 + width / 2);
+		
+        ctx.fillRect(xoffset, 0 + ((width / 2 + width / 2) + yoffset - 20), length, width / 4 + width / 2);
+        ctx.strokeRect(xoffset, 0 + ((width / 2 + width / 2) + yoffset - 20), length, width / 4 + width / 2);
+		
+        ctx.fillRect(xoffset + 50, -10 - ((width / 2) + yoffset), length - 50, width + 20);
+        ctx.strokeRect(xoffset + 50, -10 - ((width / 2) + yoffset), length - 50, width + 20);
+    } else if (image === "cannon") {
+        ctx.beginPath();
+        ctx.moveTo(xoffset + length / 2.5, -(width / 1) - yoffset);
+        ctx.lineTo(xoffset + length / 2.25 + (length / 2), 0 - ((width * 0.25) + yoffset));
+        ctx.lineTo(xoffset + length / 2.25 + (length / 2), ((width * 0.25) - yoffset));
+        ctx.lineTo(xoffset + length / 2.5, (width / 1) - yoffset);
+        ctx.lineTo(xoffset + length / 2.5, -(width / 1) - yoffset);
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+		
+        ctx.fillRect(length + xoffset, 0 - ((width / 1.2) + yoffset), length * 0.2, 0 + ((width / 1.2) * 2 + yoffset));
+        ctx.strokeRect(length + xoffset, 0 - ((width / 1.2) + yoffset), length * 0.2, 0 + ((width / 1.2) * 2 + yoffset));
     } else {
         if (type === 0) {
             ctx.fillRect(xoffset, 0 - ((width / 2) + yoffset), length, width);

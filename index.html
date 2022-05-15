@@ -57,7 +57,7 @@
     <button class="editbuttons" id="redobutton" onclick="redo()">Redo ⟳</button>
 
     <!-- Info menu -->
-    <p class="editbuttons infosettings infomation">Press the edit mode button to edit the tank. <br /> Press <kbd>E</kbd> to autofire and <kbd>C</kbd> to autospin. <br /> Refresh the page to get a new tank. <br /> <kbd>Z</kbd>/<kbd>X</kbd> To undo/redo. <br /> <kbd>O</kbd>/<kbd>P</kbd> To Increase/decrease the number of barrels places at once. </p>
+    <p class="editbuttons infosettings infomation">Press the edit mode button to edit the tank. <br /> Press <kbd>E</kbd> to autofire and <kbd>C</kbd> to autospin. <br /> Refresh the page to get a new tank. <br /> <kbd>Z</kbd>/<kbd>X</kbd> To undo/redo. <br /> <kbd>O</kbd>/<kbd>P</kbd> To Increase/decrease the number of barrels places at once. <br /> <kbd>J</kbd>/<kbd>K</kbd> To Increase/decrease the offset of barrel placement. </p>
 
     <!-- Settings menu -->
     <p class="editbuttons settingssettings infomation warning">These options can break the game!<br /> None of the settings here will ever be saved to export.</p>
@@ -68,9 +68,15 @@
     <p class="editbuttons settingssettings pos6label"><b>Shift Increments </b><span data-tooltip="Specifies the increment you rotate the barrels while holding shift. Measured in degrees. Default: 7.5" class="info">ⓘ</span></p>
     <textarea class="editbuttons settingssettings pos6" id="increment" rows="1" cols="10" placeholder="0" data-tooltip="Specifies the increment you rotate the barrels while holding shift. Measured in degrees. Default: 7.5">7.5</textarea>
 
-    <button class="editbuttons settingssettings pos7label" onclick="clearShapes()">Clear Shapes</button>
+    <button class="editbuttons settingssettings pos8label" onclick="clearShapes()">Clear Shapes</button>
 
-    <button class="editbuttons settingssettings pos7" onclick="clearBullets()">Clear Bullets</button>
+    <button class="editbuttons settingssettings pos8" onclick="clearBullets()">Clear Bullets</button>
+	
+    <p class="editbuttons settingssettings pos7label"><b>Theme </b><span data-tooltip="Specifies the type of body that should be used." class="info">ⓘ</span></p>
+	<select class="editbuttons settingssettings pos7" id="theme" data-tooltip="Specifies the theme.">
+  			<option value="dark">Default (Dark)</option>
+			<option value="light">Light</option> 
+		</select>
 
     <!-- Changelog -->
 
@@ -214,12 +220,25 @@
 
     <p class="editbuttons barrelsettings pos11label" id="traplabel"><b>Barrel Image </b><span data-tooltip="Specifies what shape of barrel you want to place." class="info">ⓘ</span></p>
     <select class="editbuttons barrelsettings pos11" id="barrellImage" data-tooltip="Specifies what type of barrel you want to place.">
-		<option value="rectangle">Normal</option>	
+		<option value="rectangle">Normal</option>
+        <option value="basic">Basic</option>	
         <option value="leftTriangle">L-Triangle</option>
         <option value="rightTriangle">R-Triangle</option>
-        <option value="trap">Mach. Gun</option>
+        <option value="mg">Mach. Gun</option>
+        <option value="chasm">Chasm</option>
         <option value="circle">Circle</option>
+        <option value="trap">Trap</option>
         <option value="single">Single</option>
+        <option value="auto">Auto</option>
+        <option value="burst">Burster</option>
+        <option value="blast">Blaster</option>
+        <option value="brawl">Brawler</option>
+        <option value="bind">Binder</option>
+        <option value="ruin">Ruiner</option>
+        <option value="cannon">Cannon</option>
+        <option value="basic2">Pipe Bomber</option>
+        <option value="basic3">Dual Pipe Bomber</option>
+		<option value="custom">Custom</option>
     </select>
 
     <p class="editbuttons barrelsettings pos12label"><b>Color </b><span data-tooltip="Specifies what color should be used for the barrel." class="info">ⓘ</span></p>
@@ -236,6 +255,17 @@
     <input type="button" class="editbuttons barrelsettings pos12 presetgrey" id="setcolorgrey" onclick="setBarrellColor('#999999')" title="Barrel Grey" />
     <input type="button" class="editbuttons barrelsettings pos12 presetdarkgrey" id="setcolordarkgrey" onclick="setBarrellColor('#555555')" title="Border Grey" />
     <input type="button" class="editbuttons barrelsettings pos12 presetbrown" id="setcolorbrown" onclick="setBarrellColor('#D68165')" title="Brown Team(Removed)" />
+	
+	<p class="editbuttons barrelsettings custob pos13label"><b>Sides</b><span data-tooltip="Sets the number of sides the main body should use" class="warninginfo">ⓘ</span></p>
+    <textarea class="editbuttons barrelsettings custob pos13" id="custombsides" rows="1" cols="10" placeholder="0" data-tooltip="Sets the number of sides the main body should use.">4</textarea>
+
+
+    <p class="editbuttons barrelsettings custob pos14label"><b>Distance</b><span data-tooltip="Sets the spikyness of the main body." class="warninginfo">ⓘ</span></p>
+    <textarea class="editbuttons barrelsettings custob pos14" id="custombdistance" rows="1" cols="10" placeholder="0" data-tooltip="Sets the radius of the main body.">0</textarea>
+
+
+    <p class="editbuttons barrelsettings custob pos15label"><b>Base Angle</b><span data-tooltip="Sets the angle the main body will face." class="warninginfo">ⓘ</span></p>
+    <textarea class="editbuttons barrelsettings custob pos15" id="custombangle" rows="1" cols="10" placeholder="0" data-tooltip="Sets the angle the main body will face.">0</textarea>
 
     <!-- Bullet menu -->
     <p class="editbuttons bulletsettings pos1label"><b>Bullet Size </b><span data-tooltip="Specifies the size of the projectiles this cannon fires." class="info">ⓘ</span></p>
@@ -270,6 +300,25 @@
     <input type="button" class="editbuttons bulletsettings pos6 presetgrey" id="setcolorgrey" onclick="setBulletColor('#999999')" title="Barrel Grey" />
     <input type="button" class="editbuttons bulletsettings pos6 presetdarkgrey" id="setcolordarkgrey" onclick="setBulletColor('#555555')" title="Border Grey" />
     <input type="button" class="editbuttons bulletsettings pos6 presetwhite" id="setcolorwhite" onclick="setBulletColor('#FFFFFF')" title="Tank Color" />
+	
+	
+	<p class="editbuttons bulletsettings pos7label"><b>Shape </b><span data-tooltip="Specifies the shape that should be used." class="info">ⓘ</span></p>
+    <select class="editbuttons bulletsettings pos7" id="shape" data-tooltip="Specifies the shape should be used." onchange="updateList()">
+			<option value="circle">Circle</option> 
+			<option value="trap">Trap</option>
+  			<option value="square">Square</option>
+			<option value="triangle">Triangle</option>
+			<option value="pentagon">Pentagon</option>
+			<option value="mothership">Mothership</option>
+			<option value="rect">Rectangle</option>
+  			<option value="smasher">Smasher</option>
+			<option value="landmine">Landmine</option>
+			<option value="spike">Spike</option>
+			<option value="dominator">Dominator</option>
+			<option value="base">Base</option>
+			<option value="drive">Drive</option>
+			<option value="custom">Custom</option>
+		</select>
 
     <!-- Save menu -->
     <button class="editbuttons savesettings pos1label" onclick="printObject()">Export tank</button>

@@ -279,20 +279,23 @@ function drawTank() {
                             xdistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, barrels[n].length + barrels[n].xoffset, barrels[n].angle) + tankpointx + xdif,
                             ydistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, barrels[n].length + barrels[n].xoffset, barrels[n].angle) + tankpointy - ydif,
                             mouse.x + ((mouse.x - tankpointx) * barrels[n].length + barrels[n].xoffset) - accel.x,
-                            mouse.y + ((mouse.y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, barrels[n].spread, barrels[n].bulletColor);
+                            mouse.y + ((mouse.y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, barrels[n].spread, barrels[n].bulletColor,
+							document.getElementById("shape").value);
                     } else {
                         bullets[bullets.length] = new Bullet(n, barrels[n].b[0], barrels[n].b[1], barrels[n].b[2],
                             xdistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, tanksize, barrels[n].angle) + tankpointx + xdif,
                             ydistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, tanksize, barrels[n].angle) + tankpointy - ydif,
                             shapes[nShape].x + ((shapes[nShape].x - tankpointx) * barrels[n].length + barrels[n].xoffset) - accel.x,
-                            shapes[nShape].y + ((shapes[nShape].y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, barrels[n].spread, barrels[n].bulletColor);
+                            shapes[nShape].y + ((shapes[nShape].y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, barrels[n].spread, barrels[n].bulletColor,
+							document.getElementById("shape").value);
                     }
                 } else {
                     bullets[bullets.length] = new Bullet(n, barrels[n].width / 2, 5, 360,
                         xdistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, barrels[n].length + barrels[n].xoffset, barrels[n].angle) + tankpointx + xdif,
                         ydistancefrom(tankpointx, tankpointy, mouse.x, mouse.y, barrels[n].length + barrels[n].xoffset, barrels[n].angle) + tankpointy - ydif,
                         mouse.x + ((mouse.x - tankpointx) * barrels[n].length + barrels[n].xoffset) - accel.x,
-                        mouse.y + ((mouse.y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, 0, barrels[n].bulletColor);
+                        mouse.y + ((mouse.y - tankpointy) * barrels[n].length + barrels[n].xoffset) - accel.y, 0, barrels[n].bulletColor,
+						document.getElementById("shape").value);
                 }
                 barrels[n].reload = barrels[n].basereload;
 
@@ -400,6 +403,11 @@ function drawTank() {
             bullets[n].initoffy = offset.totaly;
         }
         if (editmode === false) {
+
+            if (bullets[n].shape === "square") {
+                drawPoly(bullets[n].x, bullets[n].y, bullets[n].size, angle(bullets[n].x, bullets[n].y, mouse.x, mouse.y), bullets[n].color, 4);
+            }
+			
             if (bullets[n].type === 0) {
                 drawBullet(bullets[n].x, bullets[n].y, bullets[n].size, bullets[n].transparency, bullets[n].color);
             }
@@ -482,7 +490,11 @@ function drawTank() {
     if (editmode === true) {
         if ((btype < 4) || ((parseFloat(validateField(document.getElementById("offsetx").value, 0, true)) >= 0) || (parseFloat(validateField(document.getElementById("offsetx").value, 0, true)) < -1 * parseFloat(validateField(document.getElementById("body").value, 32))))) {
             for (var n = 1; n <= mirrorBarrels; n += 1) {
-                drawBarrel((angle(tankpointx, tankpointy, mouse.x, mouse.y) + 360 + ((360 / mirrorBarrels) * n)) % 360, parseFloat(validateField(document.getElementById("offsetx").value, 0, true)), parseFloat(validateField(document.getElementById("offset").value, 0, true)), parseFloat(validateField(document.getElementById("width").value, 1)), parseFloat(validateField(document.getElementById("length").value, 1)), 0.5, true, btype, document.getElementById("barrellImage").value, document.getElementById("barrellcolor").value);
+                drawBarrel((angle(tankpointx, tankpointy, mouse.x, mouse.y) + 360 + ((360 / (mirrorBarrels + mirrorBarrels2)) * n)) % 360, parseFloat(validateField(document.getElementById("offsetx").value, 0, true)), parseFloat(validateField(document.getElementById("offset").value, 0, true)), parseFloat(validateField(document.getElementById("width").value, 1)), parseFloat(validateField(document.getElementById("length").value, 1)), 0.5, true, btype, document.getElementById("barrellImage").value, document.getElementById("barrellcolor").value);
+                //Draw a ghosted barrel while in edit mode above the normal barrels.
+            }
+            for (var n = 1; n <= mirrorBarrels2 + mirrorBarrels; n += 1) {
+                drawBarrel((angle(tankpointx, tankpointy, mouse.x, mouse.y) + 360 + ((360 / (mirrorBarrels2 + mirrorBarrels)) * n)) % 360, parseFloat(validateField(document.getElementById("offsetx").value, 0, true)), parseFloat(validateField(document.getElementById("offset").value, 0, true)), parseFloat(validateField(document.getElementById("width").value, 1)), parseFloat(validateField(document.getElementById("length").value, 1)), 0.25, true, btype, document.getElementById("barrellImage").value, document.getElementById("barrellcolor").value);
                 //Draw a ghosted barrel while in edit mode above the normal barrels.
             }
         }
@@ -683,7 +695,7 @@ function drawTank() {
     if (editmode === true) {
         if ((btype === 4) && ((parseFloat(validateField(document.getElementById("offsetx").value, 0, true)) < 0) && (parseFloat(validateField(document.getElementById("offsetx").value, 0, true)) > -2 * parseFloat(validateField(document.getElementById("body").value, 32))))) {
             for (var n = 1; n <= mirrorBarrels; n += 1) {
-                drawBarrel((angle(tankpointx, tankpointy, mouse.x, mouse.y) + 360 + ((360 / mirrorBarrels) * n)) % 360, parseFloat(validateField(document.getElementById("offsetx").value, 0, true)), parseFloat(validateField(document.getElementById("offset").value, 0, true)), parseFloat(validateField(document.getElementById("width").value, 1)), parseFloat(validateField(document.getElementById("length").value, 1)), 0.5, true, btype, document.getElementById("barrellImage").value, document.getElementById("barrellcolor").value);
+                drawBarrel((angle(tankpointx, tankpointy, mouse.x, mouse.y) + 360 + ((360 / (mirrorBarrels + mirrorBarrels2)) * n)) % 360, parseFloat(validateField(document.getElementById("offsetx").value, 0, true)), parseFloat(validateField(document.getElementById("offset").value, 0, true)), parseFloat(validateField(document.getElementById("width").value, 1)), parseFloat(validateField(document.getElementById("length").value, 1)), 0.5, true, btype, document.getElementById("barrellImage").value, document.getElementById("barrellcolor").value);
                 //Draw a ghosted barrel while in edit mode above the normal barrels.
             }
         }
@@ -752,7 +764,7 @@ function placeBarrel() {
     }
 
     for (var n = 1; n <= mirrorBarrels; n += 1) {
-        barrels[barrels.length] = new Barrel((rangle + 360 + ((360 / mirrorBarrels) * n)) % 360, btype, parseFloat(validateField(document.getElementById("size").value - 10, 5, false)), parseFloat(validateField(document.getElementById("speed").value, 1, false)) / 10, parseFloat(validateField(document.getElementById("time").value * 60, 180, false)));
+        barrels[barrels.length] = new Barrel((rangle + 360 + ((360 / (mirrorBarrels + mirrorBarrels2)) * n)) % 360, btype, parseFloat(validateField(document.getElementById("size").value - 10, 5, false)), parseFloat(validateField(document.getElementById("speed").value, 1, false)) / 10, parseFloat(validateField(document.getElementById("time").value * 60, 180, false)));
     }
 }
 
@@ -806,8 +818,14 @@ function keyDownHandler(e) {
         if (e.keyCode === 79) {
             mirrorBarrels += 1;
         }
+        if (e.keyCode === 74) {
+            mirrorBarrels2 += 1;
+        }
         if ((e.keyCode === 80) && (mirrorBarrels > 1)) {
             mirrorBarrels -= 1;
+        }
+        if ((e.keyCode === 75) && (mirrorBarrels2 > 0)) {
+            mirrorBarrels2 -= 1;
         }
     }
 }
