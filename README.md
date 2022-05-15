@@ -1,6 +1,6 @@
 # Custom tank builder for the game diep.io!
 
-Remember when you said you wanted a cool flamethrower in game? Or that time when you wanted laser tanks, or a big sword? Well, welcome to Diep.io's Fantasy Tank Builder(FTB) where you can do all of that and more. Build the tank of your dreams, then test it out in a simulated envirement mimicing the main game. When you're done, you can share it with your friends and fellow community members over on https://www.reddit.com/r/diepioftb. Or, if you have a penchant for explaining ideas and theories, present it as a suggestion for the developer of http://diep.io/ by posting your creation to https://www.reddit.com/r/diepiosuggestions.
+Remember when you said you wanted a cool flamethrower in game? Or that time when you wanted laser tanks, or a big sword? Well, welcome to Diep.io's Fantasy Tank Builder Expansion(FTBE) where you can do all of that and more. Build the tank of your dreams, then test it out in a simulated envirement mimicing the main game. When you're done, you can share it with your friends and fellow community members over on https://www.reddit.com/r/diepioftb (BE SURE TO TITLE IT WITH "[FTBE]"). Or, if you have a penchant for explaining ideas and theories, present it as a suggestion for the developer of http://diep.io/ by posting your creation to https://www.reddit.com/r/diepiosuggestions (i dont think they even work on it anymore).
 
 
 ## Controls
@@ -42,8 +42,9 @@ In edit mode, click `export tank` to get the code. You give this code to your fr
 --
 ## Credits
 
+**\_Boxed** - Expander
 
-**IBlobTouch** - Project Creator/Lead
+**IBlobTouch** - Project Creator / Lead
 
 **Acarii** - Misc. Changes & Improvements / CSS
 
