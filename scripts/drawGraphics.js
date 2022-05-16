@@ -240,7 +240,7 @@ function drawBarrel(a, xoffset, yoffset, width, length, alpha, isghost, type, im
     ctx.restore();
 }
 
-function drawBullet(x, y, size, transparency, color) {
+function drawBullet(x, y, size, transparency, color, sides, angle) {
     //Draw a bullet using the given parameters.
 
     var bColor = "";
@@ -257,15 +257,8 @@ function drawBullet(x, y, size, transparency, color) {
     } else {
         ctx.strokeStyle = ColorLuminance(bColor, document.getElementById("luminance").value);
     }
-    ctx.lineWidth = 5;
-    ctx.fillStyle = bColor;
-    ctx.globalAlpha = transparency;
-    ctx.beginPath();
-    ctx.arc(x, y, size + 2, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
+	
+    drawPoly(x, y, size, angle, color, sides);
 }
 
 function drawTrap(x, y, size, angle, transparency, color) {

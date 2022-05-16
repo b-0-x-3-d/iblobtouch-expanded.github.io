@@ -733,6 +733,46 @@ kbd {
     margin-left: 330px;
 }
 
+.pos17label {
+    margin-top: 300px;
+    margin-left: 0px;
+}
+
+.pos18label {
+    margin-top: 300px;
+    margin-left: 110px;
+}
+
+.pos19label {
+    margin-top: 300px;
+    margin-left: 220px;
+}
+
+.pos20label {
+    margin-top: 300px;
+    margin-left: 330px;
+}
+
+.pos21label {
+    margin-top: 360px;
+    margin-left: 0px;
+}
+
+.pos22label {
+    margin-top: 360px;
+    margin-left: 110px;
+}
+
+.pos23label {
+    margin-top: 360px;
+    margin-left: 220px;
+}
+
+.pos24label {
+    margin-top: 360px;
+    margin-left: 330px;
+}
+
 .pos1 {
     margin-top: 85px;
     margin-left: 0px;
@@ -810,6 +850,46 @@ kbd {
 
 .pos16 {
     margin-top: 260px;
+    margin-left: 330px;
+}
+
+.pos17 {
+    margin-top: 300px;
+    margin-left: 0px;
+}
+
+.pos18 {
+    margin-top: 300px;
+    margin-left: 110px;
+}
+
+.pos19 {
+    margin-top: 300px;
+    margin-left: 220px;
+}
+
+.pos20 {
+    margin-top: 300px;
+    margin-left: 330px;
+}
+
+.pos21 {
+    margin-top: 360px;
+    margin-left: 0px;
+}
+
+.pos22 {
+    margin-top: 360px;
+    margin-left: 110px;
+}
+
+.pos23 {
+    margin-top: 360px;
+    margin-left: 220px;
+}
+
+.pos24 {
+    margin-top: 360px;
     margin-left: 330px;
 }
 

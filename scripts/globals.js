@@ -78,6 +78,7 @@ function Barrel(a, type, size, speed, time) {
     this.image = document.getElementById("barrellImage").value;
     this.color = document.getElementById("barrellcolor").value;
     this.bulletColor = document.getElementById("bulletColor").value;
+    this.xspread = parseFloat(validateField(document.getElementById("xspread").value, 0, false));
 
     if (document.getElementById("use").checked === false) {
         this.b = [size, speed, time];
